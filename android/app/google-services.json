@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "69575353123",
+    "project_id": "derivative-89e54",
+    "storage_bucket": "derivative-89e54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69575353123:android:a14b76e7265e17c1056296",
+        "android_client_info": {
+          "package_name": "com.example.derivtive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69575353123-r6oa8ob3l7qeon1rom0bavtd3lkldjbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDERqE9YGcz0fOjd2_wS_BwRkCsK6VNZBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69575353123-r6oa8ob3l7qeon1rom0bavtd3lkldjbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
