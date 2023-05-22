@@ -127,9 +127,9 @@ class _SingUpState extends State<SingUp> {
             SizedBox(
               height: 3.h,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Divider(
                   thickness: 10,
                   indent: 10,

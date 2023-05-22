@@ -1,5 +1,4 @@
 import 'package:derivtive/Homepage.dart';
-import 'package:derivtive/Singup/Singup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -181,89 +180,8 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: 5.h,
             ),
-            Row(
-              children: const [
-                Expanded(
-                  child: Divider(
-                    color: Colors.white,
-                    thickness: 5,
-                    indent: 15,
-                    endIndent: 15,
-                  ),
-                ),
-                Text(
-                  'Login with',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                Expanded(
-                  child: Divider(
-                    color: Colors.white,
-                    indent: 15,
-                    endIndent: 15,
-                    thickness: 5,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 3.h,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SizedBox(
-                  width: 30.w,
-                  height: 5.h,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff40A9FF),
-                    ),
-                    onPressed: () {},
-                    child: SizedBox(
-                      width: 5.w,
-                      child: Image.asset(
-                        'images/google.png',
-                        fit: BoxFit.cover,
-                        color: const Color.fromRGBO(9, 45, 81, 81),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 30.w,
-                  height: 5.h,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff40A9FF),
-                    ),
-                    onPressed: () {},
-                    child: SizedBox(
-                      width: 8.w,
-                      child: Image.asset(
-                        'images/facebook.png',
-                        fit: BoxFit.cover,
-                        color: const Color.fromRGBO(9, 45, 81, 81),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
             SizedBox(
               height: 10.h,
-            ),
-            TextButton(
-              onPressed: () {
-                Get.to(const SingUp());
-              },
-              child: const Text(
-                '''Dont't have an account?''',
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
-                ),
-              ),
             ),
           ],
         ),

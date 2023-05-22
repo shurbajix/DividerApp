@@ -1,5 +1,4 @@
 import 'package:derivtive/Login/Login.dart';
-import 'package:derivtive/Singup/Singup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -111,28 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               SizedBox(
-                height: 1.h,
-              ),
-              SizedBox(
-                width: 70.w,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff092D51),
-                  ),
-                  onPressed: () {
-                    Get.to(const SingUp());
-                  },
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: const Color(0xff2085EA),
-                      fontSize: 17.sp,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 33.h,
+                height: 35.h,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
