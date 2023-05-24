@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-
-import '../Class/Class.dart';
+import 'package:http/http.dart' as http;
 
 class Manually extends StatefulWidget {
   const Manually({super.key});
@@ -12,6 +11,42 @@ class Manually extends StatefulWidget {
 }
 
 class _ManuallyState extends State<Manually> {
+  final String connectUrl = 'your-api-url/connect';
+  final String moveUrl = 'your-apr-url/move';
+  Future<void> connectAccessPOint(String ssid, String password) async {
+    try {
+      final response = await http.post(
+        Uri.parse(connectUrl),
+        body: {
+          'ssid': ssid,
+          'password': password,
+        },
+      );
+      if (response.statusCode == 200) {
+        print('Connected to $ssid');
+      } else {
+        print('Failed to connect to $ssid:${response.statusCode}');
+      }
+    } catch (e) {
+      print('Failed to connect to $ssid:$e');
+    }
+  }
+
+  Future<void> moveRobot(String direction) async {
+    try {
+      final response = await http.post(Uri.parse(moveUrl), body: {
+        'direction': direction,
+      });
+      if (response.statusCode == 200) {
+        print('Robot moved $direction');
+      } else {
+        print('Faild to move robot: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Faild to move robot: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +84,16 @@ class _ManuallyState extends State<Manually> {
                 shrinkWrap: true,
                 itemCount: 4,
                 itemBuilder: (BuildContext context, index) {
+                  String direction = '';
+                  if (index == 0) {
+                    direction = 'F';
+                  } else if (index == 1) {
+                    direction = 'B';
+                  } else if (index == 2) {
+                    direction = 'U';
+                  } else if (index == 3) {
+                    direction = 'D';
+                  }
                   return Padding(
                     padding: const EdgeInsets.only(
                       top: 60,
@@ -59,9 +104,30 @@ class _ManuallyState extends State<Manually> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff186FD0),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        if (index == 0 ||
+                            index == 1 ||
+                            index == 2 ||
+                            index == 3) {
+                          moveRobot(direction);
+                        } else if (index == 4) {
+                          const String ssid =
+                              'your-ssid'; // REPLACE WITH DESIRED SSID
+                          const String password =
+                              'your-password'; //REPLACE WITH THE DESRIED PASSWORD
+                          connectAccessPOint(ssid, password);
+                        }
+                      },
                       child: Text(
-                        letters[index],
+                        index == 0
+                            ? 'F'
+                            : index == 1
+                                ? 'B'
+                                : index == 2
+                                    ? ' U'
+                                    : index == 3
+                                        ? 'D'
+                                        : 'Connect to Access Point',
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 50,

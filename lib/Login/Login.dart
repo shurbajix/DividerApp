@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'Forget_password.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -71,88 +73,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                right: 20,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Get.back();
-                              },
-                              child: const Text(
-                                'Ok',
-                              ),
-                            ),
-                          ],
-                          title: const Text(
-                            'Forget Password',
-                            style: TextStyle(
-                              color: Color.fromRGBO(1, 98, 155, 155),
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          content: SizedBox(
-                            height: 30.h,
-                            width: 20.w,
-                            child: Column(
-                              children: [
-                                const Text(
-                                  'Write Email Address',
-                                ),
-                                SizedBox(
-                                  height: 5.h,
-                                ),
-                                SizedBox(
-                                  width: 70.w,
-                                  height: 5.h,
-                                  child: TextFormField(
-                                    textAlign: TextAlign.center,
-                                    decoration: InputDecoration(
-                                      hintText: 'Write Email to send Code',
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          15,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 6.h,
-                                ),
-                                SizedBox(
-                                  width: 50.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text(
-                                      'Rest',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                    child: const Text('Forget your password?'),
-                  ),
-                ],
-              ),
-            ),
+            const forget_password(),
             SizedBox(
               height: 5.h,
             ),

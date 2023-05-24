@@ -66,41 +66,36 @@ class _AdminState extends State<Admin> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 60,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(
-                width: 40.w,
-                child: Expanded(
-                  child: Image.asset(
-                    'images/DERIVATIVE.png',
-                  ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            SizedBox(
+              width: 40.w,
+              child: Expanded(
+                child: Image.asset(
+                  'images/DERIVATIVE.png',
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 90,
-                ),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: const Icon(
-                        Icons.logout,
-                        color: Colors.white,
-                      ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 90,
+              ),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Get.offAllNamed('/');
+                    },
+                    icon: Image.asset(
+                      'images/power-off.png',
+                      color: Colors.white,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         SizedBox(
           height: 1.h,
@@ -113,13 +108,16 @@ class _AdminState extends State<Admin> {
           ),
         ),
         SizedBox(
-          height: 5.h,
+          height: 2.h,
         ),
         SizedBox(
           width: 70.w,
           child: Form(
             //key: _formKey,
             child: TextFormField(
+              style: const TextStyle(
+                color: Colors.white,
+              ),
               controller: _textController,
               textAlign: TextAlign.center,
               cursorColor: Colors.black,
@@ -127,6 +125,62 @@ class _AdminState extends State<Admin> {
                 fillColor: const Color.fromRGBO(9, 45, 81, 81),
                 filled: true,
                 hintText: 'User Generator',
+                hintStyle: const TextStyle(
+                  color: Color.fromRGBO(2, 86, 119, 119),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 1.h,
+        ),
+        SizedBox(
+          width: 70.w,
+          child: Form(
+            //key: _formKey,
+            child: TextFormField(
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+              //controller: _textController,
+              textAlign: TextAlign.center,
+              cursorColor: Colors.black,
+              decoration: InputDecoration(
+                fillColor: const Color.fromRGBO(9, 45, 81, 81),
+                filled: true,
+                hintText: 'Create Password',
+                hintStyle: const TextStyle(
+                  color: Color.fromRGBO(2, 86, 119, 119),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 1.h,
+        ),
+        SizedBox(
+          width: 70.w,
+          child: Form(
+            //key: _formKey,
+            child: TextFormField(
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+              //controller: _textController,
+              textAlign: TextAlign.center,
+              cursorColor: Colors.black,
+              decoration: InputDecoration(
+                fillColor: const Color.fromRGBO(9, 45, 81, 81),
+                filled: true,
+                hintText: 'Confirm Password',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(2, 86, 119, 119),
                 ),
@@ -158,24 +212,6 @@ class _AdminState extends State<Admin> {
                 ),
               ),
             ),
-            SizedBox(
-              width: 10.w,
-            ),
-            SizedBox(
-              width: 30.w,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff033B68),
-                ),
-                onPressed: _deleteUserGenerator,
-                child: const Text(
-                  'Delete',
-                  style: TextStyle(
-                    color: Color(0xff40A8FF),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
         SizedBox(
@@ -189,7 +225,7 @@ class _AdminState extends State<Admin> {
           ),
         ),
         SizedBox(
-          height: 5.h,
+          height: 2.h,
         ),
         SizedBox(
           width: 70.w,
@@ -212,7 +248,7 @@ class _AdminState extends State<Admin> {
           ),
         ),
         SizedBox(
-          height: 5.h,
+          height: 2.h,
         ),
         SizedBox(
           width: 70.w,
@@ -251,24 +287,6 @@ class _AdminState extends State<Admin> {
                   'Create',
                   style: TextStyle(
                     color: Color(0xff021328),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 10.w,
-            ),
-            SizedBox(
-              width: 30.w,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff033B68),
-                ),
-                onPressed: _deleteBot,
-                child: const Text(
-                  'Delete',
-                  style: TextStyle(
-                    color: Color(0xff40A8FF),
                   ),
                 ),
               ),

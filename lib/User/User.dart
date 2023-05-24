@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:derivtive/User/Auto.dart';
+import 'package:derivtive/User/Manually.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-
-import 'Dropdownview3.dart';
 
 class User extends StatefulWidget {
   const User({super.key});
@@ -18,7 +18,7 @@ class User extends StatefulWidget {
 class _UserState extends State<User> {
   List<String> itemed = List.generate(51, (index) => '$index');
 
-  int _valueCount = 0;
+  final int _valueCount = 0;
 
   String? selectcm = '5';
   String? valuecm;
@@ -92,7 +92,7 @@ class _UserState extends State<User> {
               left: 60,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SizedBox(
                   width: 40.w,
@@ -110,8 +110,8 @@ class _UserState extends State<User> {
                         onPressed: () {
                           Get.back();
                         },
-                        icon: const Icon(
-                          Icons.logout,
+                        icon: Image.asset(
+                          'images/power-off.png',
                           color: Colors.white,
                         ),
                       ),
@@ -241,230 +241,57 @@ class _UserState extends State<User> {
           SizedBox(
             height: 9.h,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20,
-                    ),
-                    child: SizedBox(
-                      width: 78,
-                      height: 32,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xff154872),
-                        ),
-                        onPressed: () {},
-                        child: const Text(
-                          'Count',
-                          style: TextStyle(
-                            color: Color(0xff186FD0),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 40,
-                    ),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'Display',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20,
-                    ),
-                    child: SizedBox(
-                      width: 90,
-                      height: 32,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xff154872),
-                        ),
-                        onPressed: () {},
-                        child: const Text(
-                          'Retrieve',
-                          style: TextStyle(
-                            color: Color(0xff186FD0),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 30,
-                    ),
-                    child: SizedBox(
-                      width: 200,
-                      height: 60,
-                      child: GestureDetector(
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return Container(
-                                color: const Color(0xff092D51),
-                                height: 250,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height: 50,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 16),
-                                      alignment: Alignment.center,
-                                      child: const Text(
-                                        'BOT ID',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    CupertinoPicker(
-                                      backgroundColor: const Color(0xff092D51),
-                                      itemExtent: 90,
-                                      onSelectedItemChanged: (int index) {
-                                        setState(() {
-                                          _valueCount = index;
-                                        });
-                                      },
-                                      children:
-                                          List.generate(itemed.length, (index) {
-                                        return Center(
-                                          child: Text(
-                                            itemed[index],
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        );
-                                      }),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text(
-                                        'Done',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  itemed[_valueCount],
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              const Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 9.h,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 25,
-                ),
-                child: SizedBox(
-                  width: 78,
-                  height: 32,
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 200,
+                  height: 90,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff154872),
+                      backgroundColor: const Color(0xff186FD0),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(
+                        const Auto(),
+                      );
+                    },
                     child: const Text(
-                      'Store',
+                      'A',
                       style: TextStyle(
-                        color: Color(0xff186FD0),
+                        fontSize: 30,
+                        color: Color(0xff021328),
                       ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 7.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      left: 20,
+                SizedBox(
+                  height: 5.h,
+                ),
+                SizedBox(
+                  width: 200,
+                  height: 90,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff186FD0),
                     ),
-                    child: Text(
-                      'Space Between Pallets',
+                    onPressed: () {
+                      Get.to(
+                        const Manually(),
+                      );
+                    },
+                    child: const Text(
+                      'M',
                       style: TextStyle(
-                        color: Colors.white,
+                        fontSize: 30,
+                        color: Color(0xff021328),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 30,
-                    ),
-                    child: Dropdownview3(),
-                  ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
