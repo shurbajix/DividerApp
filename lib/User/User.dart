@@ -83,217 +83,220 @@ class _UserState extends State<User> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 60,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                  width: 40.w,
-                  child: Image.asset(
-                    'images/DERIVATIVE.png',
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 90,
-                  ),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Image.asset(
-                          'images/power-off.png',
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'BOT ID',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.sp,
-                ),
+    return Material(
+      color: const Color(0xff031428),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 60,
               ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 300,
-                height: 60,
-                child: GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Container(
-                            color: const Color(0xff092D51),
-                            height: 250,
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 50,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  alignment: Alignment.center,
-                                  child: const Text(
-                                    'BOT ID',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                CupertinoPicker(
-                                  backgroundColor: const Color(0xff092D51),
-                                  itemExtent: 90,
-                                  onSelectedItemChanged: (int index) {
-                                    setState(
-                                      () {
-                                        _valuecount = index;
-                                      },
-                                    );
-                                  },
-                                  children: items.map((String item) {
-                                    return Center(
-                                      child: Text(
-                                        item,
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  }).toList(),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text(
-                                    'Done',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        });
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 8,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    width: 40.w,
+                    child: Image.asset(
+                      'images/DERIVATIVE.png',
                     ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(8),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 90,
                     ),
                     child: Row(
                       children: [
-                        Expanded(
-                          child: Text(
-                            items[_valuecount],
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                            ),
-                            overflow: TextOverflow.ellipsis,
+                        IconButton(
+                          onPressed: () {
+                            Get.offAllNamed('/');
+                          },
+                          icon: Image.asset(
+                            'images/power-off.png',
+                            color: Colors.white,
                           ),
-                        ),
-                        const Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.white,
                         ),
                       ],
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
-          SizedBox(
-            height: 9.h,
-          ),
-          Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 200,
-                  height: 90,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff186FD0),
-                    ),
-                    onPressed: () {
-                      Get.to(
-                        const Auto(),
-                      );
-                    },
-                    child: const Text(
-                      'A',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Color(0xff021328),
-                      ),
-                    ),
+                Text(
+                  'BOT ID',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25.sp,
                   ),
                 ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 SizedBox(
-                  height: 5.h,
-                ),
-                SizedBox(
-                  width: 200,
-                  height: 90,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff186FD0),
-                    ),
-                    onPressed: () {
-                      Get.to(
-                        const Manually(),
-                      );
+                  width: 300,
+                  height: 60,
+                  child: GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              color: const Color(0xff092D51),
+                              height: 250,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    alignment: Alignment.center,
+                                    child: const Text(
+                                      'BOT ID',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  CupertinoPicker(
+                                    backgroundColor: const Color(0xff092D51),
+                                    itemExtent: 90,
+                                    onSelectedItemChanged: (int index) {
+                                      setState(
+                                        () {
+                                          _valuecount = index;
+                                        },
+                                      );
+                                    },
+                                    children: items.map((String item) {
+                                      return Center(
+                                        child: Text(
+                                          item,
+                                          style: const TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text(
+                                      'Done',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          });
                     },
-                    child: const Text(
-                      'M',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Color(0xff021328),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              items[_valuecount],
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          const Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.white,
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-          ),
-        ],
+            SizedBox(
+              height: 9.h,
+            ),
+            Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 200,
+                    height: 90,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff186FD0),
+                      ),
+                      onPressed: () {
+                        Get.to(
+                          const Auto(),
+                        );
+                      },
+                      child: const Text(
+                        'A automatic',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Color(0xff021328),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  SizedBox(
+                    width: 200,
+                    height: 90,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff186FD0),
+                      ),
+                      onPressed: () {
+                        Get.to(
+                          const Manually(),
+                        );
+                      },
+                      child: const Text(
+                        'M Manual',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Color(0xff021328),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

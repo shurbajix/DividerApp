@@ -1,7 +1,7 @@
+import 'package:derivtive/Showlist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:http/http.dart' as http;
 
 class Admin extends StatefulWidget {
   const Admin({
@@ -13,287 +13,262 @@ class Admin extends StatefulWidget {
 }
 
 class _AdminState extends State<Admin> {
-  final TextEditingController _textController = TextEditingController();
-
-  Future<void> _createUserGenerator() async {
-    var url = Uri.parse('http://<access_point_ip>/users/create');
-
-    var body = {'name': _textController.text};
-
-    var response = await http.post(url, body: body);
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
-  }
-
-  Future<void> _deleteUserGenerator() async {
-    var url = 'http://<access_point_ip>/users/delete';
-    var body = {'id': _textController.text};
-
-    var response = await http.post(url as Uri, body: body);
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
-  }
-
-  //Bot Generator
-  final _ipController = TextEditingController();
-  final _idController = TextEditingController();
-
-  Future<void> _createBot() async {
-    var ip = _ipController.text;
-    var botId = _idController.text;
-
-    var url = Uri.parse('http://$ip/bots/create');
-    var body = {'id': botId};
-
-    var response = await http.post(url, body: body);
-    print('Create bot response status: ${response.statusCode}');
-    print('Create bot response body: ${response.body}');
-  }
-
-  Future<void> _deleteBot() async {
-    var ip = _ipController.text;
-    var botId = _idController.text;
-
-    var url = Uri.parse('http://$ip/bots/delete');
-    var body = {'id': botId};
-
-    var response = await http.post(url, body: body);
-    print('Delete bot response status: ${response.statusCode}');
-    print('Delete bot response body: ${response.body}');
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            SizedBox(
-              width: 40.w,
-              child: Expanded(
-                child: Image.asset(
-                  'images/DERIVATIVE.png',
+    return Material(
+      color: const Color(0xff031428),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(
+                width: 40.w,
+                child: Expanded(
+                  child: Image.asset(
+                    'images/DERIVATIVE.png',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 90,
+                ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Get.offAllNamed('/');
+                      },
+                      icon: Image.asset(
+                        'images/power-off.png',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 1.h,
+          ),
+          Text(
+            'User Generator',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.sp,
+            ),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          SizedBox(
+            width: 70.w,
+            child: Form(
+              //key: _formKey,
+              child: TextFormField(
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                //controller: _usernameController,
+                textAlign: TextAlign.center,
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  fillColor: const Color.fromRGBO(9, 45, 81, 81),
+                  filled: true,
+                  hintText: 'User Generator',
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(2, 86, 119, 119),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 90,
+          ),
+          SizedBox(
+            height: 1.h,
+          ),
+          SizedBox(
+            width: 70.w,
+            child: Form(
+              //key: _formKey,
+              child: TextFormField(
+                obscureText: true,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                //controller: _passwordController,
+                textAlign: TextAlign.center,
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  fillColor: const Color.fromRGBO(9, 45, 81, 81),
+                  filled: true,
+                  hintText: 'Create Password',
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(2, 86, 119, 119),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
               ),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Get.offAllNamed('/');
-                    },
-                    icon: Image.asset(
-                      'images/power-off.png',
-                      color: Colors.white,
+            ),
+          ),
+          SizedBox(
+            height: 1.h,
+          ),
+          SizedBox(
+            width: 70.w,
+            child: Form(
+              //key: _formKey,
+              child: TextFormField(
+                obscureText: true,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                //controller: _confirmPasswordController,
+                textAlign: TextAlign.center,
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  fillColor: const Color.fromRGBO(9, 45, 81, 81),
+                  filled: true,
+                  hintText: 'Confirm Password',
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(2, 86, 119, 119),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 30.w,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff40A9FF),
+                  ),
+                  onPressed: () {}, //_createUserGenerator,
+                  child: const Text(
+                    'Create',
+                    style: TextStyle(
+                      color: Color(0xff021328),
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 1.h,
-        ),
-        Text(
-          'User Generator',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20.sp,
+            ],
           ),
-        ),
-        SizedBox(
-          height: 2.h,
-        ),
-        SizedBox(
-          width: 70.w,
-          child: Form(
-            //key: _formKey,
+          SizedBox(
+            height: 3.h,
+          ),
+          Text(
+            'BOT Generator',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.sp,
+            ),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          SizedBox(
+            width: 70.w,
             child: TextFormField(
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-              controller: _textController,
+              //controller: _ipController,
+              keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                fillColor: const Color.fromRGBO(9, 45, 81, 81),
-                filled: true,
-                hintText: 'User Generator',
+                hintText: 'IP Address',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(2, 86, 119, 119),
                 ),
+                fillColor: const Color.fromRGBO(9, 45, 81, 81),
+                filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 1.h,
-        ),
-        SizedBox(
-          width: 70.w,
-          child: Form(
-            //key: _formKey,
+          SizedBox(
+            height: 2.h,
+          ),
+          SizedBox(
+            width: 70.w,
             child: TextFormField(
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-              //controller: _textController,
+              //controller: _idController,
+              keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                fillColor: const Color.fromRGBO(9, 45, 81, 81),
-                filled: true,
-                hintText: 'Create Password',
+                hintText: 'BOT ID',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(2, 86, 119, 119),
                 ),
+                fillColor: const Color.fromRGBO(9, 45, 81, 81),
+                filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 1.h,
-        ),
-        SizedBox(
-          width: 70.w,
-          child: Form(
-            //key: _formKey,
-            child: TextFormField(
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-              //controller: _textController,
-              textAlign: TextAlign.center,
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                fillColor: const Color.fromRGBO(9, 45, 81, 81),
-                filled: true,
-                hintText: 'Confirm Password',
-                hintStyle: const TextStyle(
-                  color: Color.fromRGBO(2, 86, 119, 119),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
+          SizedBox(
+            height: 2.h,
           ),
-        ),
-        SizedBox(
-          height: 5.h,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 30.w,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff40A9FF),
-                ),
-                onPressed: _createUserGenerator,
-                child: const Text(
-                  'Create',
-                  style: TextStyle(
-                    color: Color(0xff021328),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 30.w,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff40A9FF),
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    'Create',
+                    style: TextStyle(
+                      color: Color(0xff021328),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 3.h,
-        ),
-        Text(
-          'BOT Generator',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20.sp,
+            ],
           ),
-        ),
-        SizedBox(
-          height: 2.h,
-        ),
-        SizedBox(
-          width: 70.w,
-          child: TextFormField(
-            controller: _ipController,
-            keyboardType: TextInputType.number,
-            textAlign: TextAlign.center,
-            cursorColor: Colors.black,
-            decoration: InputDecoration(
-              hintText: 'IP Address',
-              hintStyle: const TextStyle(
-                color: Color.fromRGBO(2, 86, 119, 119),
+          SizedBox(
+            width: 30.w,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xff40A9FF),
               ),
-              fillColor: const Color.fromRGBO(9, 45, 81, 81),
-              filled: true,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 2.h,
-        ),
-        SizedBox(
-          width: 70.w,
-          child: TextFormField(
-            controller: _idController,
-            keyboardType: TextInputType.number,
-            textAlign: TextAlign.center,
-            cursorColor: Colors.black,
-            decoration: InputDecoration(
-              hintText: 'BOT ID',
-              hintStyle: const TextStyle(
-                color: Color.fromRGBO(2, 86, 119, 119),
-              ),
-              fillColor: const Color.fromRGBO(9, 45, 81, 81),
-              filled: true,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 5.h,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 30.w,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff40A9FF),
-                ),
-                onPressed: _createBot,
-                child: const Text(
-                  'Create',
-                  style: TextStyle(
-                    color: Color(0xff021328),
-                  ),
+              onPressed: () {
+                Get.to(
+                  const ShowList(),
+                );
+              },
+              child: const Text(
+                'Show list',
+                style: TextStyle(
+                  color: Color(0xff021328),
                 ),
               ),
             ),
-          ],
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

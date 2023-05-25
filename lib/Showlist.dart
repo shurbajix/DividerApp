@@ -4,6 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+class Item {
+  final String id;
+  final String title;
+  Item({required this.id, required this.title});
+}
+
 class ShowList extends StatefulWidget {
   const ShowList({super.key});
 
@@ -12,6 +18,11 @@ class ShowList extends StatefulWidget {
 }
 
 class _ShowListState extends State<ShowList> {
+  List<Item> items = [
+    Item(id: '1', title: 'Item 1'),
+    Item(id: '2', title: 'Item 2'),
+    Item(id: '3', title: 'Item 3'),
+  ];
   var buttonTile = const ListTile();
   @override
   Widget build(BuildContext context) {
@@ -80,12 +91,21 @@ class _ShowListState extends State<ShowList> {
                   color: Color(0xff154872),
                 ),
                 child: ListView.builder(
+                  itemCount: items.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (BuildContext context, index) {
+                    final item = items[index];
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          items.removeAt(index);
+                        });
+                      },
                       child: Slidable(
+                        key: Key(
+                          item.id.toString(),
+                        ),
                         endActionPane: ActionPane(
                           dismissible: DismissiblePane(
                             onDismissed: () {},
@@ -117,7 +137,7 @@ class _ShowListState extends State<ShowList> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Welcomes',
+                                  'users',
                                   style: TextStyle(
                                     color: Colors.white,
                                   ),
@@ -152,9 +172,65 @@ class _ShowListState extends State<ShowList> {
                 decoration: const BoxDecoration(
                   color: Color(0xff154872),
                 ),
-                child: ListView(
+                child: ListView.builder(
+                  itemCount: items.length,
                   shrinkWrap: true,
-                  children: const [],
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (BuildContext context, index) {
+                    final item = items[index];
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          items.removeAt(index);
+                        });
+                      },
+                      child: Slidable(
+                        key: Key(
+                          item.id.toString(),
+                        ),
+                        endActionPane: ActionPane(
+                          dismissible: DismissiblePane(
+                            onDismissed: () {},
+                          ),
+                          motion: const StretchMotion(),
+                          children: [
+                            SlidableAction(
+                              onPressed: (BuildContext context) {
+                                print('You are click the item');
+                              },
+                              backgroundColor: const Color(0xFFFE4A49),
+                              foregroundColor: Colors.white,
+                              icon: Icons.delete,
+                              label: 'Delete',
+                            ),
+                          ],
+                        ),
+                        child: SizedBox(
+                          width: 80.w,
+                          height: 60,
+                          child: const Card(
+                            color: Color.fromRGBO(
+                              3,
+                              20,
+                              40,
+                              40,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Bots',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

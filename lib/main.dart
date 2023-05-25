@@ -1,4 +1,6 @@
+import 'package:derivtive/Admin/Admin.dart';
 import 'package:derivtive/Login/Login.dart';
+import 'package:derivtive/User/User.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,16 +24,35 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ResponsiveSizer(builder: (context, orientation, screenType) {
-      return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Pallet Shuttle Bot',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const MyHomePage(),
-      );
-    });
+    return ResponsiveSizer(
+      builder: (context, orientation, screenType) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Pallet Shuttle Bot',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          initialRoute: '/',
+          routes: {
+            '/': (context) => const MyHomePage(),
+            '/Admin': (context) => const Admin(),
+            '/User': (context) => const User(),
+          },
+          onUnknownRoute: (settings) {
+            return MaterialPageRoute(
+              builder: (context) => const Scaffold(
+                body: Center(
+                  child: Text(
+                    'Page Not Found',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }
 

@@ -23,45 +23,47 @@ class _forget_passwordState extends State<forget_password> {
       final user = await _auth.fetchSignInMethodsForEmail(email);
       if (user.isEmpty) {
         showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: const Text('Error'),
-                content: const Text('No Account found '),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: const Text(
-                      'OK',
-                    ),
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Error'),
+              content: const Text('No Account found '),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: const Text(
+                    'OK',
                   ),
-                ],
-              );
-            });
+                ),
+              ],
+            );
+          },
+        );
       } else {
         await _auth.sendPasswordResetEmail(email: email);
         showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: const Text('Success'),
-                content: const Text(
-                  'The information was send wait the answer',
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: const Text(
-                      'OK',
-                    ),
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Success'),
+              content: const Text(
+                'The information was send wait the answer',
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: const Text(
+                    'OK',
                   ),
-                ],
-              );
-            });
+                ),
+              ],
+            );
+          },
+        );
       }
     } catch (e) {
       showDialog(
